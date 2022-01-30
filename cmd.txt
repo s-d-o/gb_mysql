@@ -1,0 +1,87 @@
+mysql> CREATE DATABASE sample;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> exit
+Bye
+
+C:\Users\epd>mysql sample < C:\my\lesson-2\example-dump.sql
+
+C:\Users\epd>
+
+C:\Users\epd>mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 49
+Server version: 5.7.36-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE sample;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_sample |
++------------------+
+| users            |
++------------------+
+1 row in set (0.01 sec)
+
+mysql>
+
+C:\Users\epd>mysqldump --where="true limit 100" mysql help_keyword > C:\my\lesso
+n-2\mysql-help_keyword-100.sql
+
+C:\Users\epd>mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 52
+Server version: 5.7.36-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE mysql_dump
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use mysql_dump
+Database changed
+mysql> exit
+Bye
+
+C:\Users\epd>mysql mysql_dump < C:\my\lesson-2\mysql-help_keyword-100.sql
+
+C:\Users\epd>mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 55
+Server version: 5.7.36-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mysql_dump
+Database changed
+
+mysql> SHOW TABLES;
++----------------------+
+| Tables_in_mysql_dump |
++----------------------+
+| help_keyword         |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql>

@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS example;
+
+USE example;
+
+CREATE TABLE IF NOT EXISTS users(
+	id bigint UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(255)
+	);
+	

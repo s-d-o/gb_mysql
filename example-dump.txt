@@ -1,0 +1,1 @@
+mysqldump example > C:\my\lesson-2\example-dump.sql

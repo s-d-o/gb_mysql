@@ -1,0 +1,1 @@
+mysqldump --where="true limit 100" mysql help_keyword > C:\my\lesson-2\mysql-help_keyword-100.sql
