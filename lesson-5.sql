@@ -63,3 +63,36 @@ SELECT * FROM users u;
 SELECT * FROM users u
 WHERE monthname(u.birthday_at) IN ('May', 'August');
 
+/*
+ * »з таблицы catalogs извлекаютс€ записи при помощи запроса. 
+ * SELECT * FROM catalogs WHERE id IN (5, 1, 2); 
+ * ќтсортируйте записи в пор€дке, заданном в списке IN.
+ * */
+SELECT * FROM catalogs WHERE id IN (5, 1, 2) ORDER BY id DESC, name;
+
+
+/*
+ * ѕодсчитайте средний возраст пользователей в таблице users
+ * */
+
+SELECT avg(timestampdiff(YEAR,birthday_at,now())) FROM users u; 
+
+/*
+ * ѕодсчитайте количество дней рождени€, которые приход€тс€ на каждый из дней недели.
+ * —ледует учесть, что необходимы дни недели текущего года, а не года рождени€.
+ * */
+
+SELECT CASE weekday(date_add(birthday_at
+					, INTERVAL (EXTRACT(YEAR FROM now()) - EXTRACT(YEAR from birthday_at)) YEAR))
+			WHEN 0 THEN 'Monday'
+			WHEN 1 THEN 'Tuesday'
+			WHEN 2 THEN 'Wednesday'
+			WHEN 3 THEN 'Thursday'
+			WHEN 4 THEN 'Friday'
+			WHEN 5 THEN 'Saturday'			
+			WHEN 6 THEN 'Sunday'
+		END AS week_day
+		,count(*)
+		,GROUP_CONCAT(name SEPARATOR ', ')
+FROM users u
+GROUP BY week_day;
